@@ -1,1609 +1,2468 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Scott Stoneburner | Stoneburner.Live</title>
-
-  <meta name="description" content="The life and work of Scott Stoneburner. Entrepreneur, curator, collector, artist, house DJ, photographer, and seeker of truth.">
-
-  <meta name="theme-color" content="#111110">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #111110;
-      --charcoal: #1b1b19;
-      --ivory: #f5f2eb;
-      --white: #ffffff;
-      --gold: #c5a46b;
-      --gray: #aaa8a1;
-      --border: rgba(255,255,255,.15);
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'DM Sans', Arial, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--black);
-      color: var(--ivory);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    /* NAVIGATION */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(17,17,16,.9);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      max-width: 1440px;
-      margin: auto;
-      padding: 20px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .logo {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: .13em;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      transition: color .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 0;
-      color: white;
-      font-size: 25px;
-      cursor: pointer;
-    }
-
-    /* GLOBAL */
-
-    section {
-      padding: 120px 7%;
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: auto;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .3em;
-      color: var(--gold);
-      margin-bottom: 25px;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      line-height: 1.15;
-    }
-
-    h1 {
-      font-size: clamp(58px, 8vw, 125px);
-      letter-spacing: -.055em;
-    }
-
-    h2 {
-      font-size: clamp(42px, 5vw, 76px);
-      letter-spacing: -.035em;
-      margin: 0 0 30px;
-    }
-
-    h3 {
-      font-size: 30px;
-    }
-
-    p {
-      color: #c5c3bc;
-      font-size: 15px;
-    }
-
-    .large-copy {
-      font-size: clamp(18px, 2vw, 23px);
-      line-height: 1.8;
-    }
-
-    .section-intro {
-      max-width: 740px;
-      margin-bottom: 65px;
-    }
-
-    .section-intro p {
-      font-size: 17px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--gold);
-      color: var(--ivory);
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: 11px;
-      font-weight: 600;
-      transition: color .3s, gap .3s;
-    }
-
-    .button:hover {
-      color: var(--gold);
-      gap: 23px;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      max-width: 1300px;
-      margin: auto;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      padding: 150px 7% 90px;
-      overflow: hidden;
-      background: #080808;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(90deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.1) 100%),
-        linear-gradient(0deg, rgba(0,0,0,.75), transparent 45%),
-        url('assets/images/hero.webp');
-      background-size: cover;
-      background-position: center;
-      opacity: .95;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1050px;
-    }
-
-    .hero h1 {
-      margin: 0 0 30px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      display: block;
-    }
-
-    .hero-description {
-      font-family: var(--serif);
-      font-size: clamp(19px, 2.4vw, 30px);
-      font-style: italic;
-      color: #e4e1da;
-      margin-bottom: 12px;
-    }
-
-    .hero-secondary {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      color: #c4c0b7;
-      margin-bottom: 35px;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      right: 7%;
-      bottom: 90px;
-      z-index: 2;
-      font-size: 10px;
-      letter-spacing: .2em;
-      writing-mode: vertical-rl;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-
-    /* PHILOSOPHY */
-
-    .manifesto {
-      background: var(--ivory);
-      color: var(--black);
-      text-align: center;
-      padding: 130px 7%;
-    }
-
-    .manifesto .eyebrow {
-      color: #947342;
-    }
-
-    .manifesto blockquote {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4.8vw, 66px);
-      line-height: 1.35;
-      max-width: 1000px;
-      margin: 0 auto;
-      letter-spacing: -.03em;
-    }
-
-    .manifesto p {
-      color: #68655f;
-      margin-top: 35px;
-      font-size: 12px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    /* ABOUT */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 9%;
-      align-items: center;
-    }
-
-    .about-image {
-      position: relative;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 680px;
-      object-fit: cover;
-      filter: grayscale(20%);
-    }
-
-    .about-image::after {
-      content: '';
-      position: absolute;
-      inset: 18px -18px -18px 18px;
-      border: 1px solid rgba(197,164,107,.45);
-      z-index: -1;
-    }
-
-    .about-copy p {
-      margin-bottom: 22px;
-    }
-
-    .about-details {
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-      padding-top: 25px;
-    }
-
-    .about-details span {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    /* CREATIVE */
-
-    .creative {
-      background: #191918;
-    }
-
-    .creative-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .creative-card {
-      position: relative;
-      height: 530px;
-      overflow: hidden;
-      background: #292927;
-    }
-
-    .creative-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .7s ease;
-    }
-
-    .creative-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .creative-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,.9), transparent 65%);
-    }
-
-    .creative-card-content {
-      position: absolute;
-      bottom: 35px;
-      left: 30px;
-      right: 30px;
-      z-index: 2;
-    }
-
-    .creative-card-content span {
-      font-size: 10px;
-      color: var(--gold);
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .creative-card-content h3 {
-      margin: 12px 0;
-    }
-
-    .creative-card-content p {
-      font-size: 13px;
-      color: #ddd;
-    }
-
-    /* MUSIC */
-
-    .music-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9%;
-      align-items: center;
-    }
-
-    .music-image img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-    }
-
-    .music-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    /* PHOTOGRAPHY */
-
-    .photography {
-      background: var(--ivory);
-      color: var(--black);
-    }
-
-    .photography p {
-      color: #66635d;
-    }
-
-    .photography .button {
-      color: var(--black);
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 15px;
-      margin-bottom: 40px;
-    }
-
-    .photo-grid figure {
-      margin: 0;
-      overflow: hidden;
-      background: #d8d4cb;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s ease;
-    }
-
-    .photo-grid figure:hover img {
-      transform: scale(1.04);
-    }
-
-    .photo-one {
-      grid-column: span 7;
-      height: 460px;
-    }
-
-    .photo-two {
-      grid-column: span 5;
-      height: 460px;
-    }
-
-    .photo-three {
-      grid-column: span 4;
-      height: 350px;
-    }
-
-    .photo-four {
-      grid-column: span 8;
-      height: 350px;
-    }
-
-    /* VENTURES */
-
-    .ventures-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .venture-card {
-      padding: 45px 35px;
-      background: var(--black);
-      min-height: 280px;
-      transition: background .3s;
-    }
-
-    .venture-card:hover {
-      background: #232320;
-    }
-
-    .venture-number {
-      font-size: 11px;
-      color: var(--gold);
-      letter-spacing: .15em;
-    }
-
-    .venture-card h3 {
-      font-family: var(--sans);
-      font-size: 23px;
-      font-weight: 500;
-      margin: 35px 0 12px;
-    }
-
-    .venture-card p {
-      font-size: 13px;
-      max-width: 300px;
-    }
-
-    .venture-link {
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 11px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* CURIOSITIES */
-
-    .curiosities {
-      background: #1a1a18;
-    }
-
-    .curiosity-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10%;
-      align-items: center;
-    }
-
-    .curiosity-image img {
-      width: 100%;
-      height: 540px;
-      object-fit: cover;
-    }
-
-    .topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 35px 0;
-    }
-
-    .topic {
-      padding: 9px 14px;
-      border: 1px solid rgba(255,255,255,.2);
-      font-size: 11px;
-      letter-spacing: .08em;
-      color: #c8c6c0;
-    }
-
-    /* CONNECT */
-
-    .connect {
-      text-align: center;
-      padding: 150px 7%;
-    }
-
-    .connect h2 {
-      font-size: clamp(55px, 8vw, 110px);
-    }
-
-    .connect-intro {
-      max-width: 580px;
-      margin: 0 auto 45px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px 35px;
-      margin-top: 45px;
-    }
-
-    .social-links a {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,.25);
-      padding-bottom: 8px;
-      transition: color .3s;
-    }
-
-    .social-links a:hover {
-      color: var(--gold);
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 55px 7%;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: .15em;
-      margin-bottom: 18px;
-    }
-
-    footer p {
-      font-size: 12px;
-      color: #77756f;
-    }
-
-    .footer-quote {
-      font-family: var(--serif);
-      font-size: 19px;
-      font-style: italic;
-      color: #b6b2aa;
-      margin: 30px 0;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1000px) {
-      .creative-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .ventures-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .about-grid,
-      .music-grid,
-      .curiosity-grid {
-        gap: 5%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        padding: 18px 6%;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 25px 7%;
-        background: var(--black);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 22px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      section {
-        padding: 85px 6%;
-      }
-
-      .hero {
-        min-height: 90vh;
-        padding: 130px 6% 70px;
-      }
-
-      .hero-image {
-        background-position: 62% center;
-      }
-
-      .hero h1 {
-        font-size: clamp(48px, 11vw, 80px);
-      }
-
-      .hero-scroll {
-        display: none;
-      }
-
-      .manifesto {
-        padding: 95px 7%;
-      }
-
-      .about-grid,
-      .music-grid,
-      .curiosity-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .about-image img {
-        height: 480px;
-      }
-
-      .creative-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .creative-card {
-        height: 420px;
-      }
-
-      .music-image img,
-      .curiosity-image img {
-        height: 400px;
-      }
-
-      .ventures-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .venture-card {
-        min-height: 220px;
-      }
-
-      .photo-one,
-      .photo-two,
-      .photo-three,
-      .photo-four {
-        grid-column: span 12;
-        height: 330px;
-      }
-
-      .connect {
-        padding: 100px 6%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-      }
-    }
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scott Stoneburner | The Art of Living</title>
+
+<meta name="description" content="The life, work, and creative world of Scott Stoneburner. Entrepreneur. Curator. Collector. Artist. House DJ. Photographer. Seeker of Truth. Lover of Life & Liberty.">
+
+<meta name="theme-color" content="#0c0c0b">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scott Stoneburner | The Art of Living">
+<meta property="og:description" content="A living collection of ideas, experiences, creations, and connections.">
+<meta property="og:url" content="https://stoneburner.live/">
+<meta property="og:image" content="https://stoneburner.live/hero.webp">
+
+<link rel="canonical" href="https://stoneburner.live/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   STONEBURNER.LIVE
+   VERSION 2
+   THE ART OF LIVING
+===================================================== */
+
+:root {
+  --black: #0c0c0b;
+  --dark: #151514;
+  --panel: #1d1d1b;
+  --ivory: #f3f0e9;
+  --white: #ffffff;
+  --gold: #c7a774;
+  --muted: #a5a39d;
+  --line: rgba(255,255,255,.13);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+  --display: 'Manrope', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--black);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.container {
+  max-width: 1380px;
+  margin: auto;
+}
+
+.section {
+  padding: 135px 7%;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(46px, 6vw, 88px);
+  line-height: 1.14;
+  letter-spacing: -.045em;
+}
+
+.section-title em {
+  font-weight: 400;
+}
+
+.body-copy {
+  color: #b9b7b0;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.lead {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.55;
+  color: var(--ivory);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 12px;
+  color: var(--ivory);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  transition: gap .3s, color .3s;
+}
+
+.text-link:hover {
+  gap: 27px;
+  color: var(--gold);
+}
+
+.gold {
+  color: var(--gold);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(12,12,11,.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.nav {
+  max-width: 1600px;
+  margin: auto;
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.brand {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links a {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #d0cec8;
+  transition: color .3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links .nav-connect {
+  border: 1px solid rgba(199,167,116,.55);
+  padding: 11px 18px;
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--ivory);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #090909;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,.88) 0%,
+      rgba(0,0,0,.62) 36%,
+      rgba(0,0,0,.15) 100%),
+    linear-gradient(0deg,
+      rgba(0,0,0,.55),
+      transparent 45%),
+    url('hero.webp');
+
+  background-size: cover;
+  background-position: center 36%;
+  transform: scale(1.035);
+  animation: heroReveal 1.8s ease forwards;
+}
+
+@keyframes heroReveal {
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 150px 7% 100px;
+}
+
+.hero-overline {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(60px, 10vw, 160px);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.085em;
+  text-transform: uppercase;
+  margin-bottom: 38px;
+  overflow-wrap: anywhere;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero h1 .first-name {
+  font-weight: 300;
+  letter-spacing: -.07em;
+  font-size: .64em;
+  margin-bottom: 10px;
+}
+
+.hero-identity {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(21px, 2.4vw, 34px);
+  margin-bottom: 12px;
+}
+
+.hero-secondary {
+  color: #d1cec7;
+  font-size: 12px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  margin-bottom: 38px;
+}
+
+.hero-bottom {
+  position: absolute;
+  z-index: 2;
+  bottom: 35px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-bottom span {
+  color: #b8b6af;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+}
+
+/* =====================================================
+   MANIFESTO
+===================================================== */
+
+.manifesto {
+  background: var(--ivory);
+  color: var(--black);
+  text-align: center;
+  padding: 150px 8%;
+}
+
+.manifesto .eyebrow {
+  color: #927345;
+}
+
+.manifesto blockquote {
+  max-width: 1100px;
+  margin: auto;
+  font-family: var(--serif);
+  font-size: clamp(35px, 5vw, 72px);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: 1.38;
+}
+
+.manifesto-caption {
+  color: #74716a;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-top: 45px;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 10%;
+  align-items: center;
+}
+
+.about-photo {
+  position: relative;
+}
+
+.about-photo img {
+  height: 720px;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(15%);
+}
+
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 22px -22px -22px 22px;
+  border: 1px solid rgba(199,167,116,.5);
+  z-index: -1;
+}
+
+.about-text .section-title {
+  margin-bottom: 38px;
+}
+
+.about-text .lead {
+  margin-bottom: 28px;
+}
+
+.about-text .body-copy {
+  margin-bottom: 20px;
+}
+
+.about-signature {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.about-signature p {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+}
+
+/* =====================================================
+   CHAPTER TRANSITIONS
+===================================================== */
+
+.chapter-banner {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.chapter-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.6)),
+    url('ocean.webp') center / cover;
+}
+
+.chapter-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 70px 7%;
+}
+
+.chapter-banner h2 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 85px);
+  font-weight: 400;
+  line-height: 1.25;
+  max-width: 900px;
+  margin: auto;
+}
+
+.chapter-banner p {
+  margin-top: 30px;
+  color: #dedbd3;
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   CREATIVE INTRO
+===================================================== */
+
+.creative-intro {
+  text-align: center;
+  background: var(--dark);
+}
+
+.creative-intro .section-title {
+  margin-bottom: 30px;
+}
+
+.creative-intro p {
+  max-width: 650px;
+  margin: auto;
+}
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music {
+  background: #111110;
+}
+
+.music-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+  align-items: center;
+}
+
+.music-visual {
+  position: relative;
+  overflow: hidden;
+  background: #222;
+}
+
+.music-visual img {
+  height: 690px;
+  object-fit: cover;
+}
+
+.music-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.65), transparent 50%);
+}
+
+.music-visual-label {
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+  z-index: 2;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.music-copy .section-title {
+  margin-bottom: 35px;
+}
+
+.music-copy .lead {
+  margin-bottom: 28px;
+}
+
+.music-copy .body-copy {
+  margin-bottom: 20px;
+}
+
+.music-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 35px;
+}
+
+.music-note {
+  margin-top: 45px;
+  border-left: 1px solid var(--gold);
+  padding-left: 25px;
+}
+
+.music-note p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #dedbd4;
+}
+
+/* =====================================================
+   PHOTOGRAPHY
+===================================================== */
+
+.photography {
+  background: var(--ivory);
+  color: var(--black);
+}
+
+.photography .eyebrow {
+  color: #927345;
+}
+
+.photo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 65px;
+}
+
+.photo-heading .section-title {
+  max-width: 700px;
+}
+
+.photo-heading p {
+  max-width: 340px;
+  color: #68655e;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  background: #ddd8cf;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.045);
+}
+
+.photo-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.55), transparent 45%);
+  pointer-events: none;
+}
+
+.photo-item figcaption {
+  position: absolute;
+  bottom: 24px;
+  left: 25px;
+  z-index: 2;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.photo-large {
+  grid-column: span 8;
+  height: 570px;
+}
+
+.photo-tall {
+  grid-column: span 4;
+  height: 570px;
+}
+
+.photo-half {
+  grid-column: span 6;
+  height: 430px;
+}
+
+.photo-gallery-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-top: 45px;
+}
+
+.photo-gallery-footer p {
+  color: #77736c;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+}
+
+.photography .text-link {
+  color: var(--black);
+}
+
+/* =====================================================
+   ART
+===================================================== */
+
+.art {
+  background: #171716;
+}
+
+.art-layout {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 9%;
+  align-items: center;
+}
+
+.art-photo {
+  position: relative;
+}
+
+.art-photo img {
+  height: 580px;
+  object-fit: cover;
+}
+
+.art-copy .section-title {
+  margin-bottom: 30px;
+}
+
+.art-copy .lead {
+  margin-bottom: 25px;
+}
+
+.art-copy .body-copy {
+  margin-bottom: 35px;
+}
+
+/* =====================================================
+   VENTURES
+===================================================== */
+
+.ventures {
+  background: var(--black);
+}
+
+.ventures-header {
+  max-width: 850px;
+  margin-bottom: 75px;
+}
+
+.ventures-header .section-title {
+  margin-bottom: 28px;
+}
+
+.ventures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.venture {
+  position: relative;
+  min-height: 410px;
+  background: #20201e;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 42px;
+  border: 1px solid rgba(255,255,255,.07);
+  transition: border-color .3s, transform .3s;
+}
+
+.venture:hover {
+  border-color: rgba(199,167,116,.6);
+  transform: translateY(-3px);
+}
+
+.venture-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: .34;
+  transition: transform .7s, opacity .4s;
+}
+
+.venture:hover .venture-background {
+  transform: scale(1.05);
+  opacity: .48;
+}
+
+.venture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.93), rgba(0,0,0,.12));
+}
+
+.venture-content {
+  position: relative;
+  z-index: 2;
+}
+
+.venture-category {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .23em;
+  text-transform: uppercase;
+}
+
+.venture h3 {
+  font-family: var(--display);
+  font-size: clamp(27px, 3vw, 43px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: 1.15;
+  margin: 15px 0;
+}
+
+.venture p {
+  max-width: 410px;
+  color: #d3d0c8;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.venture-arrow {
+  display: inline-block;
+  margin-top: 25px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.venture-gk3 .venture-background {
+  background-image: url('gk3.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+}
+
+.venture-house .venture-background {
+  background-image: url('houselabs.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+}
+
+.venture-decco .venture-background {
+  background-image: url('decco.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+}
+
+.venture-studios .venture-background {
+  background-image: url('business.webp');
+}
+
+.venture-secondary {
+  margin-top: 55px;
+  padding-top: 35px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.venture-secondary h4 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.venture-secondary p {
+  color: #a6a39d;
+  font-size: 13px;
+  max-width: 430px;
+}
+
+/* =====================================================
+   CURIOSITIES
+===================================================== */
+
+.curiosities {
+  background: #1a1a18;
+}
+
+.curiosities-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  align-items: center;
+}
+
+.curiosities-image {
+  position: relative;
+}
+
+.curiosities-image img {
+  height: 640px;
+  object-fit: cover;
+}
+
+.curiosities-copy .section-title {
+  margin-bottom: 30px;
+}
+
+.curiosities-copy .lead {
+  margin-bottom: 28px;
+}
+
+.curiosities-copy .body-copy {
+  margin-bottom: 25px;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 35px 0 40px;
+}
+
+.interests span {
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 9px 14px;
+  color: #c8c5bd;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+/* =====================================================
+   BOOKS
+===================================================== */
+
+.books {
+  background: var(--ivory);
+  color: var(--black);
+}
+
+.books .eyebrow {
+  color: #927345;
+}
+
+.books-header {
+  max-width: 750px;
+  margin-bottom: 65px;
+}
+
+.books-header .section-title {
+  margin-bottom: 25px;
+}
+
+.books-header p {
+  color: #69665e;
+  font-size: 15px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.book-card {
+  padding: 45px;
+  border: 1px solid #d6d1c7;
+  background: #ebe7df;
+}
+
+.book-number {
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: #987748;
+}
+
+.book-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 30px 0 10px;
+}
+
+.book-author {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #8b7a62;
+  margin-bottom: 25px;
+}
+
+.book-card p:last-child {
+  color: #65615a;
+  font-size: 14px;
+}
+
+.books-footer {
+  margin-top: 45px;
+}
+
+.books .text-link {
+  color: var(--black);
+}
+
+/* =====================================================
+   CONNECT
+===================================================== */
+
+.connect {
+  position: relative;
+  text-align: center;
+  background: #10100f;
+  padding: 160px 7% 140px;
+}
+
+.connect .section-title {
+  font-size: clamp(60px, 9vw, 135px);
+  margin-bottom: 30px;
+}
+
+.connect-lead {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  font-family: var(--serif);
+  font-size: clamp(21px, 2.6vw, 33px);
+  line-height: 1.6;
+}
+
+.connect-copy {
+  color: #a6a39d;
+  font-size: 14px;
+  margin-bottom: 45px;
+}
+
+.connect-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 32px;
+  max-width: 850px;
+  margin: 65px auto 0;
+}
+
+.connect-links a {
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 10px;
+  color: #dedbd4;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+
+.connect-links a:hover {
+  color: var(--gold);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  background: #090909;
+  border-top: 1px solid var(--line);
+  padding: 75px 7% 45px;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--display);
+  font-size: clamp(24px, 4vw, 45px);
+  font-weight: 800;
+  letter-spacing: -.05em;
+}
+
+.footer-brand span {
+  color: var(--gold);
+}
+
+.footer-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 21px;
+  margin: 35px auto;
+  max-width: 650px;
+  color: #c7c3bb;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 60px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-bottom p {
+  color: #77746d;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .about-layout,
+  .music-layout,
+  .art-layout,
+  .curiosities-layout {
+    gap: 6%;
+  }
+
+  .about-photo img {
+    height: 600px;
+  }
+
+  .music-visual img {
+    height: 580px;
+  }
+
+  .venture {
+    min-height: 360px;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .nav {
+    padding: 18px 6%;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    height: calc(100svh - 65px);
+    background: #0c0c0b;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 90px 6%;
+  }
+
+  .hero-content {
+    padding: 130px 6% 120px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 11vw, 90px);
+  }
+
+  .hero-photo {
+    background-position: 60% center;
+  }
+
+  .hero-secondary {
+    font-size: 10px;
+    line-height: 2;
+  }
+
+  .hero-bottom {
+    left: 6%;
+    right: 6%;
+  }
+
+  .manifesto {
+    padding: 100px 7%;
+  }
+
+  .about-layout,
+  .music-layout,
+  .art-layout,
+  .curiosities-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-photo {
+    max-width: 550px;
+  }
+
+  .about-photo img {
+    height: 540px;
+  }
+
+  .music-visual {
+    order: -1;
+  }
+
+  .music-visual img {
+    height: 480px;
+  }
+
+  .photo-heading {
+    display: block;
+  }
+
+  .photo-heading p {
+    margin-top: 25px;
+  }
+
+  .photo-large,
+  .photo-tall,
+  .photo-half {
+    grid-column: span 12;
+    height: 440px;
+  }
+
+  .art-photo img,
+  .curiosities-image img {
+    height: 480px;
+  }
+
+  .ventures-grid,
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .venture {
+    min-height: 380px;
+  }
+
+  .photo-gallery-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .connect {
+    padding: 110px 6%;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .brand {
+    font-size: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 11.4vw, 65px);
+  }
+
+  .hero-overline {
+    font-size: 9px;
+  }
+
+  .hero-identity {
+    font-size: 21px;
+  }
+
+  .hero-bottom span:last-child {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 43px;
+  }
+
+  .about-photo img {
+    height: 420px;
+  }
+
+  .about-photo::after {
+    inset: 12px -12px -12px 12px;
+  }
+
+  .chapter-banner {
+    min-height: 390px;
+  }
+
+  .music-visual img {
+    height: 390px;
+  }
+
+  .photo-large,
+  .photo-tall,
+  .photo-half {
+    height: 330px;
+  }
+
+  .art-photo img,
+  .curiosities-image img {
+    height: 370px;
+  }
+
+  .venture {
+    min-height: 350px;
+    padding: 30px;
+  }
+
+  .venture-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .book-card {
+    padding: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-  <header>
-    <nav class="nav" aria-label="Main navigation">
+<header class="site-header">
 
-      <a href="#home" class="logo">
-        STONEBURNER<span>.LIVE</span>
-      </a>
+  <nav class="nav" aria-label="Main navigation">
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
-      </button>
+    <a href="#home" class="brand">
+      STONEBURNER<span>.LIVE</span>
+    </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#creative">Creative</a>
-        <a href="#ventures">Ventures</a>
-        <a href="#curiosities">Curiosities</a>
-        <a href="#connect">Connect</a>
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="navLinks">
+      ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
+
+      <a href="#about">About</a>
+      <a href="#creative">Creative</a>
+      <a href="#photography">Photography</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#curiosities">Curiosities</a>
+      <a href="#connect" class="nav-connect">Connect ↗</a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+  <div class="hero-photo"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-overline">
+      A Living Autobiography
+    </div>
+
+    <h1>
+      <span class="first-name">SCOTT</span>
+      <span>STONEBURNER</span>
+    </h1>
+
+    <div class="hero-identity">
+      Entrepreneur. Curator. Collector. Artist.
+    </div>
+
+    <p class="hero-secondary">
+      House DJ. Photographer. Media Creator.
+    </p>
+
+    <a href="#about" class="text-link">
+      Enter My World <span>↗</span>
+    </a>
+
+  </div>
+
+  <div class="hero-bottom">
+
+    <span>Seeker of Truth. Lover of Life & Liberty.</span>
+
+    <span>Scroll to Explore ↓</span>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MANIFESTO
+===================================================== -->
+
+<section class="manifesto">
+
+  <div class="eyebrow">
+    The Art of Living
+  </div>
+
+  <blockquote>
+    “The greatest work of art is the life we create.”
+  </blockquote>
+
+  <div class="manifesto-caption">
+    Create. Explore. Connect.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section" id="about">
+
+  <div class="container">
+
+    <div class="about-layout">
+
+      <div class="about-photo reveal">
+
+        <img
+          src="about.webp"
+          alt="Scott Stoneburner"
+          loading="lazy">
+
       </div>
 
-    </nav>
-  </header>
-
-
-  <!-- HERO -->
-
-  <main>
-
-    <section class="hero" id="home">
-
-      <div class="hero-image"></div>
-
-      <div class="hero-content">
+      <div class="about-text reveal">
 
         <div class="eyebrow">
-          A Living Autobiography
+          Chapter 01 / The Story
         </div>
 
-        <h1>
-          <span>SCOTT</span>
-          <span>STONEBURNER</span>
-        </h1>
-
-        <div class="hero-description">
-          Entrepreneur. Curator. Collector. Artist.
-        </div>
-
-        <p class="hero-secondary">
-          House DJ. Photographer. Media Creator.
-        </p>
-
-        <a href="#about" class="button">
-          Explore My World <span>↗</span>
-        </a>
-
-      </div>
-
-      <div class="hero-scroll">
-        Scroll to Explore
-      </div>
-
-    </section>
-
-
-    <!-- PHILOSOPHY -->
-
-    <section class="manifesto">
-
-      <div class="eyebrow">
-        A Personal Philosophy
-      </div>
-
-      <blockquote>
-        “The greatest work of art is the life we create.”
-      </blockquote>
-
-      <p>
-        Create. Explore. Connect.
-      </p>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-      <div class="container">
-
-        <div class="about-grid">
-
-          <div class="about-image">
-            <img
-              src="assets/images/about.webp"
-              alt="Portrait of Scott Stoneburner"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="about-copy">
-
-            <div class="eyebrow">
-              01 / About
-            </div>
-
-            <h2>
-              A Life of<br>
-              Curiosity & Creation.
-            </h2>
-
-            <p class="large-copy">
-              I'm Scott Stoneburner — an entrepreneur, creative,
-              collector, and lifelong student of the human experience.
-            </p>
-
-            <p>
-              My interests have taken me through business, banking,
-              technology, biotechnology, art, music, photography,
-              and entrepreneurship.
-            </p>
-
-            <p>
-              I've always been fascinated by the intersection of
-              ideas, people, and opportunity — and by what happens
-              when curiosity becomes creation.
-            </p>
-
-            <p>
-              Whether I'm building a business, discovering new music,
-              photographing the world, connecting artists, or
-              exploring a new idea, I'm drawn to the same thing:
-              the possibility of creating something meaningful.
-            </p>
-
-            <p>
-              I'm also a United States Air Force veteran and hold
-              an MBA. Those experiences helped shape my approach
-              to leadership, discipline, and entrepreneurship.
-            </p>
-
-            <p>
-              Beyond the work, I'm a believer in individual liberty,
-              lifelong learning, and the importance of living
-              deliberately.
-            </p>
-
-            <div class="about-details">
-              <span>What Drives Me</span>
-              <p>
-                Seeker of Truth. Lover of Life & Liberty.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <div class="divider"></div>
-
-
-    <!-- CREATIVE LIFE -->
-
-    <section class="creative" id="creative">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <div class="eyebrow">
-            02 / Creative Life
-          </div>
-
-          <h2>
-            The Art of<br>
-            Being Alive.
-          </h2>
-
-          <p>
-            Music, photography, art, and creative expression
-            are not separate from life. They're some of the
-            ways we experience it most deeply.
-          </p>
-
-        </div>
-
-        <div class="creative-grid">
-
-          <a href="#music" class="creative-card">
-
-            <img
-              src="assets/images/dj-triptych.webp"
-              alt="DJ Stoneburner"
-              loading="lazy"
-            >
-
-            <div class="creative-card-content">
-
-              <span>Music & Sound</span>
-
-              <h3>
-                DJ Stoneburner
-              </h3>
-
-              <p>
-                House music, rhythm, connection, and the dance floor.
-              </p>
-
-            </div>
-
-          </a>
-
-
-          <a href="#photography" class="creative-card">
-
-            <img
-              src="assets/images/model.webp"
-              alt="Model photography by Scott Stoneburner"
-              loading="lazy"
-            >
-
-            <div class="creative-card-content">
-
-              <span>Photography</span>
-
-              <h3>
-                Through My Lens
-              </h3>
-
-              <p>
-                People. Places. Nature. Life.
-              </p>
-
-            </div>
-
-          </a>
-
-
-          <a href="https://www.decco.art/" target="_blank" rel="noopener noreferrer" class="creative-card">
-
-            <img
-              src="assets/images/artist.webp"
-              alt="Artist at work"
-              loading="lazy"
-            >
-
-            <div class="creative-card-content">
-
-              <span>Art & Culture</span>
-
-              <h3>
-                The Creative World
-              </h3>
-
-              <p>
-                Discovering, collecting, and connecting with art.
-              </p>
-
-            </div>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- MUSIC -->
-
-    <section id="music">
-
-      <div class="container">
-
-        <div class="music-grid">
-
-          <div>
-
-            <div class="eyebrow">
-              Music / DJ Stoneburner
-            </div>
-
-            <h2>
-              The Soundtrack<br>
-              to My Life.
-            </h2>
-
-            <p class="large-copy">
-              Music is how we decorate time.
-            </p>
-
-            <p>
-              From the funk and soul of house music to the
-              sweeping emotion of progressive sounds,
-              music has always been one of my favorite
-              ways to connect with people and experience life.
-            </p>
-
-            <p>
-              As DJ Stoneburner, I explore rhythm, energy,
-              emotion, and the simple joy of being alive.
-            </p>
-
-            <p>
-              I'm also building HouseLabs.Live — a community
-              dedicated to DJs, music lovers, learning,
-              collaboration, and opportunity.
-            </p>
-
-            <div class="music-links">
-
-              <a
-                href="https://open.spotify.com/user/vsstoneburner"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button"
-              >
-                My Spotify ↗
-              </a>
-
-              <a
-                href="https://houselabs.live/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button"
-              >
-                HouseLabs ↗
-              </a>
-
-            </div>
-
-          </div>
-
-          <div class="music-image">
-
-            <img
-              src="assets/images/dj-art.webp"
-              alt="DJ Stoneburner artwork"
-              loading="lazy"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PHOTOGRAPHY -->
-
-    <section class="photography" id="photography">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <div class="eyebrow">
-            Photography / Through My Lens
-          </div>
-
-          <h2>
-            People. Places.<br>
-            Nature. Life.
-          </h2>
-
-          <p>
-            Photography is an invitation to slow down,
-            observe, and discover beauty in the world
-            around us.
-          </p>
-
-          <p>
-            From portraits and models to wildlife,
-            landscapes, architecture, and everyday moments,
-            these are some of the things I've seen
-            through my lens.
-          </p>
-
-        </div>
-
-        <div class="photo-grid">
-
-          <figure class="photo-one">
-            <img
-              src="assets/images/lighthouse.webp"
-              alt="Coastal lighthouse photography by Scott Stoneburner"
-              loading="lazy"
-            >
-          </figure>
-
-          <figure class="photo-two">
-            <img
-              src="assets/images/model.webp"
-              alt="Lifestyle portrait of a model with a horse"
-              loading="lazy"
-            >
-          </figure>
-
-          <figure class="photo-three">
-            <img
-              src="assets/images/butterfly.webp"
-              alt="Butterfly wildlife photography"
-              loading="lazy"
-            >
-          </figure>
-
-          <figure class="photo-four">
-            <img
-              src="assets/images/bridge.webp"
-              alt="Charleston bridge at sunset"
-              loading="lazy"
-            >
-          </figure>
-
-        </div>
-
-        <a
-          href="https://gk3studios.pixieset.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button"
-        >
-          View Full Photography Portfolio ↗
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- VENTURES -->
-
-    <section id="ventures">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <div class="eyebrow">
-            03 / Ventures & Communities
-          </div>
-
-          <h2>
-            Ideas Brought<br>
-            to Life.
-          </h2>
-
-          <p>
-            Entrepreneurship is one of my favorite forms
-            of creativity — bringing together people,
-            resources, ideas, and opportunities to build
-            something that didn't exist before.
-          </p>
-
-        </div>
-
-        <div class="ventures-grid">
-
-          <div class="venture-card">
-
-            <div class="venture-number">01</div>
-
-            <h3>GoldKey Partners</h3>
-
-            <p>
-              Entrepreneurial ventures, investments,
-              partnerships, and business development.
-            </p>
-
-          </div>
-
-
-          <div class="venture-card">
-
-            <div class="venture-number">02</div>
-
-            <h3>GK3</h3>
-
-            <p>
-              Marketing and intelligence powered by
-              sponsored growth networks.
-            </p>
-
-            <a
-              href="https://g-k-3.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="venture-link"
-            >
-              Explore GK3 ↗
-            </a>
-
-          </div>
-
-
-          <div class="venture-card">
-
-            <div class="venture-number">03</div>
-
-            <h3>GK3 Studios</h3>
-
-            <p>
-              Photography, videography, creative media,
-              and visual storytelling.
-            </p>
-
-            <a
-              href="https://gk3studios.pixieset.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="venture-link"
-            >
-              View Portfolio ↗
-            </a>
-
-          </div>
-
-
-          <div class="venture-card">
-
-            <div class="venture-number">04</div>
-
-            <h3>HouseLabs.Live</h3>
-
-            <p>
-              Charleston's DJ playground.
-              Music, community, learning,
-              and creative collaboration.
-            </p>
-
-            <a
-              href="https://houselabs.live/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="venture-link"
-            >
-              Explore HouseLabs ↗
-            </a>
-
-          </div>
-
-
-          <div class="venture-card">
-
-            <div class="venture-number">05</div>
-
-            <h3>Decco.Art</h3>
-
-            <p>
-              Connecting art, artists, collectors,
-              and creative communities.
-            </p>
-
-            <a
-              href="https://www.decco.art/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="venture-link"
-            >
-              Explore Decco.Art ↗
-            </a>
-
-          </div>
-
-
-          <div class="venture-card">
-
-            <div class="venture-number">06</div>
-
-            <h3>Burner LLC</h3>
-
-            <p>
-              Consumer products, creative concepts,
-              and entrepreneurial experimentation.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CURIOSITIES -->
-
-    <section class="curiosities" id="curiosities">
-
-      <div class="container">
-
-        <div class="curiosity-grid">
-
-          <div>
-
-            <div class="eyebrow">
-              04 / Curiosities
-            </div>
-
-            <h2>
-              An Ocean<br>
-              of Ideas.
-            </h2>
-
-            <p class="large-copy">
-              The more I learn, the more I realize
-              how much there is left to discover.
-            </p>
-
-            <p>
-              I've always been fascinated by the
-              questions that shape our understanding
-              of the world — and ourselves.
-            </p>
-
-            <p>
-              Science, philosophy, technology,
-              entrepreneurship, history, music,
-              and the human experience.
-            </p>
-
-            <p>
-              Books have been some of my greatest
-              teachers, introducing me to new worlds,
-              new perspectives, and new possibilities.
-            </p>
-
-            <div class="topics">
-
-              <span class="topic">Philosophy</span>
-              <span class="topic">Science</span>
-              <span class="topic">Technology</span>
-              <span class="topic">Entrepreneurship</span>
-              <span class="topic">Art</span>
-              <span class="topic">Music</span>
-              <span class="topic">Human Experience</span>
-              <span class="topic">Liberty</span>
-
-            </div>
-
-            <a
-              href="https://www.goodreads.com/user/show/68671238"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="button"
-            >
-              Explore My Bookshelf ↗
-            </a>
-
-          </div>
-
-          <div class="curiosity-image">
-
-            <img
-              src="assets/images/ocean.webp"
-              alt="Scott Stoneburner looking toward the ocean"
-              loading="lazy"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONNECT -->
-
-    <section class="connect" id="connect">
-
-      <div class="container">
-
-        <div class="eyebrow">
-          05 / Connect
-        </div>
-
-        <h2>
-          Let's Connect.
+        <h2 class="section-title">
+          A Life Less<br>
+          <em>Ordinary.</em>
         </h2>
 
-        <p class="connect-intro large-copy">
-          The best opportunities often begin
-          with a simple conversation.
+        <p class="lead">
+          I've always been fascinated by what's possible.
         </p>
 
-        <p>
-          Business. Art. Music. Photography.
-          Ideas. Collaboration. Life.
+        <p class="body-copy">
+          I'm Scott Stoneburner — an entrepreneur,
+          creative, collector, and lifelong student
+          of the human experience.
         </p>
 
-        <p>
-          Wherever our interests intersect,
-          I'd love to hear from you.
+        <p class="body-copy">
+          My journey has taken me through banking,
+          technology, biotechnology, business,
+          entrepreneurship, art, music, and photography.
+          Along the way, I've discovered that some of
+          life's most meaningful experiences happen
+          when we venture beyond what's familiar.
         </p>
 
-        <div class="social-links">
+        <p class="body-copy">
+          I'm a United States Air Force veteran,
+          an MBA graduate, and someone who has spent
+          much of his life exploring ideas, building
+          businesses, connecting people, and pursuing
+          new opportunities.
+        </p>
+
+        <p class="body-copy">
+          Some ideas become businesses. Others become
+          lessons. Some turn into photographs, music,
+          friendships, or unexpected adventures.
+        </p>
+
+        <p class="body-copy">
+          I believe in curiosity, individual liberty,
+          lifelong learning, and the freedom to create
+          a life that reflects who we are.
+        </p>
+
+        <div class="about-signature">
+
+          <p>
+            Seeker of Truth.<br>
+            Lover of Life & Liberty.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     VISUAL TRANSITION
+===================================================== -->
+
+<section class="chapter-banner">
+
+  <div class="chapter-banner-content reveal">
+
+    <div class="eyebrow">
+      A Personal Perspective
+    </div>
+
+    <h2>
+      Life is not simply something to experience.
+      It is something to create.
+    </h2>
+
+    <p>
+      The journey is the destination.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CREATIVE INTRO
+===================================================== -->
+
+<section class="section creative-intro" id="creative">
+
+  <div class="container reveal">
+
+    <div class="eyebrow">
+      Chapter 02 / Creative Life
+    </div>
+
+    <h2 class="section-title">
+      The Art of<br>
+      <em>Being Alive.</em>
+    </h2>
+
+    <p class="body-copy">
+      Music, photography, art, and creative expression
+      are some of the ways we connect with the world,
+      with one another, and with ourselves.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<section class="section music" id="music">
+
+  <div class="container">
+
+    <div class="music-layout">
+
+      <div class="music-visual reveal">
+
+        <img
+          src="dj-triptych.webp"
+          alt="DJ Stoneburner"
+          loading="lazy">
+
+        <div class="music-visual-label">
+          DJ STONEBURNER
+        </div>
+
+      </div>
+
+      <div class="music-copy reveal">
+
+        <div class="eyebrow">
+          Music / Rhythm / Connection
+        </div>
+
+        <h2 class="section-title">
+          The Soundtrack<br>
+          to <em>My Life.</em>
+        </h2>
+
+        <p class="lead">
+          Some things are better felt than explained.
+        </p>
+
+        <p class="body-copy">
+          Music has always been one of those things for me.
+          From the funk, soul, and rhythm of house music
+          to the sweeping emotion of progressive sounds,
+          music has a remarkable ability to transport us.
+        </p>
+
+        <p class="body-copy">
+          As DJ Stoneburner, I explore the intersection
+          of rhythm, emotion, energy, and connection.
+        </p>
+
+        <p class="body-copy">
+          I'm also building HouseLabs.Live — a community
+          where DJs and music lovers come together
+          to learn, collaborate, create, and share
+          their passion for music.
+        </p>
+
+        <div class="music-actions">
 
           <a
             href="https://open.spotify.com/user/vsstoneburner"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            Spotify ↗
-          </a>
-
-          <a
-            href="https://gk3studios.pixieset.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Photography ↗
-          </a>
-
-          <a
-            href="https://www.goodreads.com/user/show/68671238"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Goodreads ↗
+            class="text-link">
+            My Spotify ↗
           </a>
 
           <a
             href="https://houselabs.live/"
             target="_blank"
             rel="noopener noreferrer"
-          >
+            class="text-link">
             HouseLabs ↗
           </a>
 
-          <a
-            href="https://www.decco.art/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Decco.Art ↗
-          </a>
+        </div>
 
-          <a
-            href="https://g-k-3.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GK3 ↗
-          </a>
+        <div class="music-note">
+
+          <p>
+            “Music is how we decorate time.”
+          </p>
 
         </div>
 
       </div>
 
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="footer-logo">
-      STONEBURNER.LIVE
     </div>
 
-    <p>
-      Entrepreneur. Curator. Collector. Artist.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PHOTOGRAPHY
+===================================================== -->
+
+<section class="section photography" id="photography">
+
+  <div class="container">
+
+    <div class="photo-heading reveal">
+
+      <div>
+
+        <div class="eyebrow">
+          Photography / Through My Lens
+        </div>
+
+        <h2 class="section-title">
+          People. Places.<br>
+          <em>Nature. Life.</em>
+        </h2>
+
+      </div>
+
+      <p>
+        A collection of moments, perspectives,
+        and discoveries captured along the way.
+        Finding beauty in the extraordinary —
+        and in the everyday.
+      </p>
+
+    </div>
+
+    <div class="photo-gallery">
+
+      <figure class="photo-item photo-large reveal">
+
+        <img
+          src="lighthouse.webp"
+          alt="Lighthouse on the South Carolina coast"
+          loading="lazy">
+
+        <figcaption>
+          Places & Perspectives
+        </figcaption>
+
+      </figure>
+
+      <figure class="photo-item photo-tall reveal">
+
+        <img
+          src="model.webp"
+          alt="Lifestyle model photography with horse"
+          loading="lazy">
+
+        <figcaption>
+          Portraits & Models
+        </figcaption>
+
+      </figure>
+
+      <figure class="photo-item photo-half reveal">
+
+        <img
+          src="butterfly.webp"
+          alt="Butterfly resting on colorful flowers"
+          loading="lazy">
+
+        <figcaption>
+          Nature & Wildlife
+        </figcaption>
+
+      </figure>
+
+      <figure class="photo-item photo-half reveal">
+
+        <img
+          src="bridge.webp"
+          alt="Charleston bridge at sunset"
+          loading="lazy">
+
+        <figcaption>
+          Landscapes & Light
+        </figcaption>
+
+      </figure>
+
+    </div>
+
+    <div class="photo-gallery-footer">
+
+      <p>
+        Photography by Scott Stoneburner
+      </p>
+
+      <a
+        href="https://gk3studios.pixieset.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-link">
+        View Full Photography Portfolio ↗
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ART & CURATION
+===================================================== -->
+
+<section class="section art">
+
+  <div class="container">
+
+    <div class="art-layout">
+
+      <div class="art-photo reveal">
+
+        <img
+          src="artist.webp"
+          alt="Artist creating a work of art"
+          loading="lazy">
+
+      </div>
+
+      <div class="art-copy reveal">
+
+        <div class="eyebrow">
+          Art / Culture / Community
+        </div>
+
+        <h2 class="section-title">
+          A World<br>
+          of <em>Art.</em>
+        </h2>
+
+        <p class="lead">
+          Art has a way of revealing what words cannot.
+        </p>
+
+        <p class="body-copy">
+          I've developed a deep appreciation for artists,
+          their creative processes, and the remarkable
+          ways art brings people together.
+        </p>
+
+        <p class="body-copy">
+          Through collecting, curating, collaborating,
+          and building creative communities, I've found
+          that the relationships surrounding art
+          can be every bit as meaningful as the
+          works themselves.
+        </p>
+
+        <a
+          href="https://www.decco.art/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-link">
+          Explore Decco.Art ↗
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     VENTURES
+===================================================== -->
+
+<section class="section ventures" id="ventures">
+
+  <div class="container">
+
+    <div class="ventures-header reveal">
+
+      <div class="eyebrow">
+        Chapter 03 / Entrepreneurship
+      </div>
+
+      <h2 class="section-title">
+        Ideas Brought<br>
+        <em>to Life.</em>
+      </h2>
+
+      <p class="body-copy">
+        Entrepreneurship is one of my favorite forms
+        of creativity. It brings together ideas,
+        people, resources, and opportunity to create
+        something that didn't exist before.
+      </p>
+
+    </div>
+
+    <div class="ventures-grid">
+
+      <!-- GK3 -->
+
+      <a
+        href="https://g-k-3.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venture venture-gk3 reveal">
+
+        <div class="venture-background"></div>
+
+        <div class="venture-content">
+
+          <span class="venture-category">
+            Marketing & Intelligence
+          </span>
+
+          <h3>
+            GK3
+          </h3>
+
+          <p>
+            Building sponsored growth networks
+            that connect businesses, customers,
+            and opportunity.
+          </p>
+
+          <span class="venture-arrow">
+            Explore GK3 ↗
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- HOUSELABS -->
+
+      <a
+        href="https://houselabs.live/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venture venture-house reveal">
+
+        <div class="venture-background"></div>
+
+        <div class="venture-content">
+
+          <span class="venture-category">
+            Music & Community
+          </span>
+
+          <h3>
+            HouseLabs.Live
+          </h3>
+
+          <p>
+            Charleston's DJ playground.
+            A community built around music,
+            learning, creativity, and connection.
+          </p>
+
+          <span class="venture-arrow">
+            Explore HouseLabs ↗
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- DECCO -->
+
+      <a
+        href="https://www.decco.art/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venture venture-decco reveal">
+
+        <div class="venture-background"></div>
+
+        <div class="venture-content">
+
+          <span class="venture-category">
+            Art & Culture
+          </span>
+
+          <h3>
+            Decco.Art
+          </h3>
+
+          <p>
+            Discovering art, connecting artists,
+            and creating opportunities within
+            creative communities.
+          </p>
+
+          <span class="venture-arrow">
+            Explore Decco.Art ↗
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- GK3 STUDIOS -->
+
+      <a
+        href="https://gk3studios.pixieset.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venture venture-studios reveal">
+
+        <div class="venture-background"></div>
+
+        <div class="venture-content">
+
+          <span class="venture-category">
+            Photography & Media
+          </span>
+
+          <h3>
+            GK3 Studios
+          </h3>
+
+          <p>
+            Photography, videography,
+            visual storytelling, and
+            creative media production.
+          </p>
+
+          <span class="venture-arrow">
+            View Creative Portfolio ↗
+          </span>
+
+        </div>
+
+      </a>
+
+    </div>
+
+
+    <!-- SECONDARY VENTURES -->
+
+    <div class="venture-secondary reveal">
+
+      <div>
+
+        <h4>
+          GoldKey Partners
+        </h4>
+
+        <p>
+          Entrepreneurial ventures, strategic
+          partnerships, investments, and
+          business development.
+        </p>
+
+      </div>
+
+      <div>
+
+        <h4>
+          Burner LLC
+        </h4>
+
+        <p>
+          Consumer products, original concepts,
+          and entrepreneurial experimentation,
+          including BurnerBee Hot Honey.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CURIOSITIES
+===================================================== -->
+
+<section class="section curiosities" id="curiosities">
+
+  <div class="container">
+
+    <div class="curiosities-layout">
+
+      <div class="curiosities-copy reveal">
+
+        <div class="eyebrow">
+          Chapter 04 / The Curious Mind
+        </div>
+
+        <h2 class="section-title">
+          An Ocean<br>
+          of <em>Ideas.</em>
+        </h2>
+
+        <p class="lead">
+          The more I learn, the more I realize
+          how much there is left to discover.
+        </p>
+
+        <p class="body-copy">
+          I've always been drawn to big questions.
+          Where did we come from? Where are we going?
+          What makes us human? And what might
+          still be possible?
+        </p>
+
+        <p class="body-copy">
+          My curiosity spans science, technology,
+          philosophy, entrepreneurship, history,
+          music, art, and the human experience.
+        </p>
+
+        <p class="body-copy">
+          Books have been among my greatest teachers.
+          They've introduced me to unfamiliar worlds,
+          challenged my assumptions, and inspired
+          me to keep exploring.
+        </p>
+
+        <div class="interests">
+
+          <span>Science</span>
+          <span>Philosophy</span>
+          <span>Technology</span>
+          <span>Entrepreneurship</span>
+          <span>Art</span>
+          <span>Music</span>
+          <span>Human Experience</span>
+          <span>Liberty</span>
+
+        </div>
+
+        <a
+          href="https://www.goodreads.com/user/show/68671238"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-link">
+          Explore My Goodreads ↗
+        </a>
+
+      </div>
+
+      <div class="curiosities-image reveal">
+
+        <img
+          src="ocean.webp"
+          alt="Scott Stoneburner looking out toward the ocean"
+          loading="lazy">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKSHELF
+===================================================== -->
+
+<section class="section books">
+
+  <div class="container">
+
+    <div class="books-header reveal">
+
+      <div class="eyebrow">
+        The Bookshelf
+      </div>
+
+      <h2 class="section-title">
+        Ideas That<br>
+        <em>Shape Us.</em>
+      </h2>
+
+      <p>
+        A few works that have influenced my thinking,
+        curiosity, and understanding of the world.
+      </p>
+
+    </div>
+
+    <div class="books-grid">
+
+      <div class="book-card reveal">
+
+        <div class="book-number">
+          01 / MYTHOLOGY & HUMAN EXPERIENCE
+        </div>
+
+        <h3>
+          The Hero with a Thousand Faces
+        </h3>
+
+        <div class="book-author">
+          Joseph Campbell
+        </div>
+
+        <p>
+          An exploration of the stories, journeys,
+          and transformations that connect
+          humanity across cultures and generations.
+        </p>
+
+      </div>
+
+      <div class="book-card reveal">
+
+        <div class="book-number">
+          02 / AMBITION & POSSIBILITY
+        </div>
+
+        <h3>
+          Think and Grow Rich
+        </h3>
+
+        <div class="book-author">
+          Napoleon Hill
+        </div>
+
+        <p>
+          A classic exploration of ambition,
+          persistence, belief, and the relationship
+          between thought and achievement.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="books-footer">
+
+      <a
+        href="https://www.goodreads.com/user/show/68671238"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-link">
+        Visit My Bookshelf ↗
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONNECT
+===================================================== -->
+
+<section class="connect" id="connect">
+
+  <div class="container reveal">
+
+    <div class="eyebrow">
+      Chapter 05 / Connection
+    </div>
+
+    <h2 class="section-title">
+      Let's <em>Connect.</em>
+    </h2>
+
+    <p class="connect-lead">
+      The world is full of interesting people.
+      And the best things in life often begin
+      with a simple conversation.
     </p>
 
-    <div class="footer-quote">
-      “The greatest work of art is the life we create.”
+    <p class="connect-copy">
+      Business. Art. Music. Photography.
+      Ideas. Collaboration. Life.
+    </p>
+
+    <div class="connect-links">
+
+      <a
+        href="https://open.spotify.com/user/vsstoneburner"
+        target="_blank"
+        rel="noopener noreferrer">
+        Spotify ↗
+      </a>
+
+      <a
+        href="https://gk3studios.pixieset.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Photography ↗
+      </a>
+
+      <a
+        href="https://www.goodreads.com/user/show/68671238"
+        target="_blank"
+        rel="noopener noreferrer">
+        Goodreads ↗
+      </a>
+
+      <a
+        href="https://houselabs.live/"
+        target="_blank"
+        rel="noopener noreferrer">
+        HouseLabs ↗
+      </a>
+
+      <a
+        href="https://www.decco.art/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Decco.Art ↗
+      </a>
+
+      <a
+        href="https://g-k-3.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        GK3 ↗
+      </a>
+
     </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <div class="footer-brand">
+    STONEBURNER<span>.LIVE</span>
+  </div>
+
+  <div class="footer-quote">
+    “The greatest work of art is the life we create.”
+  </div>
+
+  <div class="footer-bottom">
+
+    <p>
+      © <span id="year"></span> Scott Stoneburner
+    </p>
 
     <p>
       Create. Explore. Connect.
     </p>
 
-    <p>
-      © <span id="year"></span> Scott Stoneburner.
-      All Rights Reserved.
-    </p>
+  </div>
 
-  </footer>
+</footer>
 
 
-  <!-- JAVASCRIPT -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-  <script>
-    // Automatically update copyright year
+<script>
 
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
+/* COPYRIGHT YEAR */
 
-
-    // Mobile navigation
-
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', function() {
-      const isOpen = navLinks.classList.toggle('active');
-
-      menuToggle.setAttribute('aria-expanded', isOpen);
-      menuToggle.textContent = isOpen ? '×' : '☰';
-    });
+document.getElementById('year').textContent =
+  new Date().getFullYear();
 
 
-    // Close mobile menu after clicking a link
+/* MOBILE NAVIGATION */
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.textContent = '☰';
+const menuButton = document.getElementById('menuButton');
+const navLinks = document.getElementById('navLinks');
+
+function closeMenu() {
+  navLinks.classList.remove('active');
+  document.body.classList.remove('menu-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open navigation');
+  menuButton.textContent = '☰';
+}
+
+menuButton.addEventListener('click', () => {
+
+  const isOpen = navLinks.classList.toggle('active');
+
+  document.body.classList.toggle('menu-open', isOpen);
+
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute(
+    'aria-label',
+    isOpen ? 'Close navigation' : 'Open navigation'
+  );
+
+  menuButton.textContent = isOpen ? '×' : '☰';
+
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+
+  link.addEventListener('click', closeMenu);
+
+});
+
+document.addEventListener('keydown', event => {
+
+  if (event.key === 'Escape') {
+    closeMenu();
+  }
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealElements = document.querySelectorAll('.reveal');
+
+if (
+  'IntersectionObserver' in window &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+) {
+
+  const revealObserver = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add('visible');
+
+          revealObserver.unobserve(entry.target);
+
+        }
+
       });
-    });
-  </script>
+
+    },
+    {
+      threshold: 0.08,
+      rootMargin: '0px 0px 40px 0px'
+    }
+  );
+
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
+
+} else {
+
+  revealElements.forEach(element => {
+    element.classList.add('visible');
+  });
+
+}
+
+</script>
 
 </body>
 </html>
